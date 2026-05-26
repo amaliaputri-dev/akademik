@@ -1,0 +1,46 @@
+.DS_Store
+
+application/cache/*
+!application/cache/index.html
+!application/cache/.htaccess
+!application/cache/sessions/
+application/cache/sessions/*
+!application/cache/sessions/index.html
+!application/cache/sessions/.htaccess
+
+application/logs/*
+!application/logs/index.html
+!application/logs/.htaccess
+
+user_guide_src/build/*
+user_guide_src/cilexer/build/*
+user_guide_src/cilexer/dist/*
+user_guide_src/cilexer/pycilexer.egg-info/*
+/vendor/
+
+# IDE Files
+#-------------------------
+/nbproject/
+.idea/*
+
+## Sublime Text cache files
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+
+# Local environment files
+#-------------------------
+Thumbs.db
+Desktop.ini
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+
+# Local test / export files
+#-------------------------
+test_db.php
+akademik.sql
