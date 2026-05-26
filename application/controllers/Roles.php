@@ -55,7 +55,7 @@ class Roles extends MY_Controller {
 	{
 		$current_user = $this->getCurrentUser();
 
-		if (!$this->Siakad_model->isAdmin($current_user))
+		if (!$this->Siakad_model->isAdminUser($current_user))
 		{
 			show_error('Akses khusus admin.', 403, 'Forbidden');
 		}

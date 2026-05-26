@@ -1192,13 +1192,7 @@ class Siakad_model extends CI_Model {
 			return;
 		}
 
-		$subquery = $this->db
-			->select('nama_jurusan')
-			->from('jurusan')
-			->where('fakultas_id', $fakultas_id)
-			->get_compiled_select();
-
-		$query->where("$field IN ($subquery)", NULL, FALSE);
+		$query->where($field . ' IN (SELECT nama_jurusan FROM jurusan WHERE fakultas_id = ' . $fakultas_id . ')', NULL, FALSE);
 	}
 
 	private function applyFacultyRecordScope($query, $current_user, $mahasiswa_id_field, $nim_field)
@@ -1211,14 +1205,8 @@ class Siakad_model extends CI_Model {
 			return;
 		}
 
-		$subquery = $this->db
-			->select('mahasiswa.id')
-			->from('mahasiswa')
-			->where("mahasiswa.jurusan_id IN (SELECT id FROM jurusan WHERE fakultas_id = " . $fakultas_id . ")", NULL, FALSE)
-			->get_compiled_select();
-
 		$query->group_start()
-			->where("$mahasiswa_id_field IN ($subquery)", NULL, FALSE)
+			->where($mahasiswa_id_field . ' IN (SELECT mahasiswa.id FROM mahasiswa WHERE mahasiswa.jurusan_id IN (SELECT id FROM jurusan WHERE fakultas_id = ' . $fakultas_id . '))', NULL, FALSE)
 			->or_where("$nim_field IN (SELECT nim FROM mahasiswa WHERE jurusan_id IN (SELECT id FROM jurusan WHERE fakultas_id = " . $fakultas_id . "))", NULL, FALSE)
 			->group_end();
 	}

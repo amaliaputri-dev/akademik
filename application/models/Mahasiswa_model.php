@@ -211,12 +211,6 @@ class Mahasiswa_model extends CI_Model {
 			return;
 		}
 
-		$subquery = $this->db
-			->select('id')
-			->from('jurusan')
-			->where('fakultas_id', $fakultas_id)
-			->get_compiled_select();
-
-		$query->where("$field IN ($subquery)", NULL, FALSE);
+		$query->where($field . ' IN (SELECT id FROM jurusan WHERE fakultas_id = ' . $fakultas_id . ')', NULL, FALSE);
 	}
 }
