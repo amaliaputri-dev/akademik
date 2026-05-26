@@ -558,6 +558,36 @@
 			color: var(--text);
 		}
 
+		.field-group select {
+			width: 100%;
+			padding: 12px 44px 12px 14px;
+			border-radius: 12px;
+			border: 1px solid var(--border);
+			background:
+				linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+			color: var(--text);
+			font: inherit;
+			line-height: 1.4;
+			appearance: none;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			background-image:
+				linear-gradient(180deg, #ffffff 0%, #f7fbff 100%),
+				url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'%3E%3Cpath fill='%230f5492' d='M3.2 5.1 7 8.9l3.8-3.8.9.9L7 10.8 2.3 6z'/%3E%3C/svg%3E");
+			background-repeat: no-repeat, no-repeat;
+			background-position: 0 0, right 14px center;
+			background-size: auto, 14px;
+			box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+			cursor: pointer;
+		}
+
+		.field-group input:focus,
+		.field-group select:focus {
+			outline: none;
+			border-color: #7fb0ea;
+			box-shadow: 0 0 0 4px rgba(42, 125, 225, 0.12);
+		}
+
 		.form-actions {
 			display: flex;
 			flex-wrap: wrap;
